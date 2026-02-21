@@ -1,8 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 
-const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
-
 const SYSTEM_INSTRUCTION = `
 You are the "Ramadan Companion" AI Nutritionist.
 Your goal is to help Muslims plan their daily meals for the holy month of Ramadan based on their specific dietary restrictions.
@@ -18,6 +16,14 @@ Format the response beautifully in Markdown. Use bolding to emphasize ingredient
 
 export async function POST(req: Request) {
     try {
+        const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+        if (!apiKey) {
+            console.error("GEMINI_API_KEY is not set in the environment variables.");
+            return NextResponse.json({ error: "Server configuration error: Missing API Key" }, { status: 500 });
+        }
+
+        const ai = new GoogleGenAI({ apiKey });
+
         const { dietaryPreferences, region, goal } = await req.json();
 
         if (!dietaryPreferences) {

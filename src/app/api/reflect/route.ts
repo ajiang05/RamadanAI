@@ -1,10 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 
-// Initialize the SDK. It will automatically pick up process.env.GEMINI_API_KEY
-// Note: Since we saved it as NEXT_PUBLIC_GEMINI_API_KEY originally, we must pass it explicitly here.
-const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY });
-
 const SYSTEM_INSTRUCTION = `
 You are the "Ramadan Companion", an empathetic, highly knowledgeable, and deeply compassionate Islamic scholar and guide.
 Your purpose is to help Muslims navigate the holy month of Ramadan by explaining Quranic verses, offering spiritual reflections, and generating personalized Duas (prayers).
@@ -19,6 +15,14 @@ Format your response in Markdown. Use bolding to highlight key concepts. Ensure 
 
 export async function POST(req: Request) {
     try {
+        const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+        if (!apiKey) {
+            console.error("GEMINI_API_KEY is not set in the environment variables.");
+            return NextResponse.json({ error: "Server configuration error: Missing API Key" }, { status: 500 });
+        }
+
+        const ai = new GoogleGenAI({ apiKey });
+
         const { prompt } = await req.json();
 
         if (!prompt) {
