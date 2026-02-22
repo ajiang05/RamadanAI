@@ -1,8 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ramadan AI Companion
+
+**Live App:** [https://ramadanai.vercel.app](https://ramadanai.vercel.app)
+
+Ramadan AI Companion is a personalized AI guide for the holy month of Ramadan. It provides users with helpful features to enrich their spiritual journey, manage their fasting, and stay motivated through the month.
+
+## Features
+
+- **Prayer Times & Fasting Countdown:** Location-based accurate prayer times and an automatic countdown to Suhoor and Iftar.
+- **AI-Powered Quran Reflection:** Deep, personalized insights and reflections powered by Gemini API.
+- **AI Meal Suggestions:** Smart recommendations for Suhoor and Iftar meals to keep you energized and healthy.
+- **Good Deeds Journal:** Track your daily good deeds with a 30-day interactive journal and an adorable animated mascot.
+- **Multilingual Support:** Reach a broader community with multiple language options.
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +38,9 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework:** [Next.js](https://nextjs.org) (App Router)
+- **Styling:** Tailwind CSS, shadcn/ui
+- **AI:** Google Gemini API
+- **Deployment:** Vercel
